@@ -1,3 +1,4 @@
+/* Use a simple import, no more three directives! */
 @import "tailwindcss";
 
 :root {
