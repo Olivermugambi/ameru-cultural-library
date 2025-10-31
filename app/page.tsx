@@ -1,11 +1,181 @@
-// app/page.tsx (or equivalent)
+'use client';
+import React from 'react';
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  AppBar,
+  Toolbar,
+  IconButton,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-export default function Home() {
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#5B3A29', // deep brown, inspired by Meru earth tones
+    },
+    secondary: {
+      main: '#C5A572', // warm beige accent
+    },
+    background: {
+      default: '#F9F5EF',
+    },
+  },
+  typography: {
+    fontFamily: 'Inter, sans-serif',
+    h2: { fontWeight: 700 },
+    body1: { lineHeight: 1.7 },
+  },
+});
+
+export default function LandingPage() {
   return (
-    <div className="flex h-screen items-center justify-center bg-blue-100 p-8">
-      <h1 className="text-4xl font-bold text-indigo-700 underline">
-        🎉 Tailwind is Working!
-      </h1>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
+        {/* --- Header --- */}
+        <AppBar position="static" color="transparent" elevation={0}>
+          <Toolbar>
+            <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700, color: 'primary.main' }}>
+              Ameru Cultural Library
+            </Typography>
+            <Button color="primary" variant="outlined" href="/library">
+              Enter Library
+            </Button>
+          </Toolbar>
+        </AppBar>
+
+        {/* --- Hero Section --- */}
+        <Box
+          sx={{
+            textAlign: 'center',
+            py: { xs: 8, md: 12 },
+            background: 'linear-gradient(180deg, #F1E5D1 0%, #F9F5EF 100%)',
+          }}
+        >
+          <Container maxWidth="md">
+            <Typography variant="h2" color="primary.main" gutterBottom>
+              Preserving the Spirit of Ameru
+            </Typography>
+            <Typography variant="body1" color="text.secondary" mb={4}>
+              Explore the songs, stories, and wisdom of the Ameru people —
+              digitized, catalogued, and freely accessible to generations.
+            </Typography>
+            <Button variant="contained" color="primary" size="large" href="/library">
+              Explore the Archive
+            </Button>
+          </Container>
+        </Box>
+
+        {/* --- Categories Section --- */}
+        <Container sx={{ py: 8 }}>
+          <Typography variant="h4" align="center" gutterBottom color="primary.main">
+            Discover Our Collections
+          </Typography>
+          <Typography align="center" color="text.secondary" mb={6}>
+            Books, oral traditions, and multimedia artefacts brought together to tell our story.
+          </Typography>
+
+          <Grid container spacing={4}>
+            {[
+              {
+                title: 'Books & Manuscripts',
+                img: '/images/books.jpg',
+                desc: 'Digitized texts, historical manuscripts, and written folklore.',
+              },
+              {
+                title: 'Audio Recordings',
+                img: '/images/audio.jpg',
+                desc: 'Songs, oral histories, and recorded interviews with elders.',
+              },
+              {
+                title: 'Video Archives',
+                img: '/images/video.jpg',
+                desc: 'Documentaries and cultural ceremonies captured in motion.',
+              },
+            ].map((cat, i) => (
+              <Grid size={{ xs: 12, md: 4}} key={i}>
+                <Card
+                  sx={{
+                    borderRadius: 3,
+                    boxShadow: 3,
+                    transition: 'transform 0.3s',
+                    '&:hover': { transform: 'translateY(-5px)' },
+                  }}
+                >
+                  <CardMedia component="img" height="220" image={cat.img} alt={cat.title} />
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom color="primary.main">
+                      {cat.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {cat.desc}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+
+        {/* --- Featured Artefact Section --- */}
+        <Box sx={{ py: 8, bgcolor: '#EDE1D0' }}>
+          <Container maxWidth="md">
+            <Typography variant="h4" align="center" gutterBottom color="primary.main">
+              Featured Artefact
+            </Typography>
+            <Card
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                mt: 4,
+                borderRadius: 3,
+                boxShadow: 2,
+              }}
+            >
+              <CardMedia
+                component="img"
+                image="/images/featured.jpg"
+                alt="Featured Artefact"
+                sx={{ width: { md: '50%' }, objectFit: 'cover' }}
+              />
+              <CardContent>
+                <Typography variant="h5" gutterBottom color="primary.main">
+                  AMERU OF KENYA LIVED IN EGYPT LONG AGO: AMERU LIVED IN EGYPT
+                </Typography>
+                <Typography variant="body1" color="text.secondary" mb={2}>
+                  by TARCISIO F. B. GICHUNGE (Author), Gichunge WA M'Thirua (Introduction) <br></br>
+                  When we were small children, a disease known as Corona Virus emerged and shrouded 
+                  the whole world from December, 2019. That disease was baptized “Covid-19” 
+                  (Corona virus Disease 2019) because it emerged in 2019. That Covid-19 shook 
+                  the entire world because it was spread by shaking of hands with those infected. 
+                  Thus, we were made to avoid shaking hands with any one; to us it was a disease that 
+                  had come to make people look like enemies by avoiding greetings altogether.
+                </Typography>
+                <Button variant="contained" color="primary" href="https://www.amazon.com/AMERU-KENYA-LIVED-EGYPT-LONG-ebook/dp/B0B56Y8XVC/ref=sr_1_6?s=books&sr=1-6">
+                  Read Now
+                </Button>
+              </CardContent>
+            </Card>
+          </Container>
+        </Box>
+
+        {/* --- Footer --- */}
+        <Box sx={{ py: 4, bgcolor: 'primary.main', color: 'white', textAlign: 'center' }}>
+          <Typography variant="body2">
+            © {new Date().getFullYear()} Ameru Cultural Library. Preserving Heritage in the Digital Age.
+          </Typography>
+        </Box>
+      </Box>
+    </ThemeProvider>
   );
 }
