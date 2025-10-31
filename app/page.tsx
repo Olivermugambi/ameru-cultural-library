@@ -14,30 +14,17 @@ import {
   IconButton,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider} from '@mui/material/styles';
+import { ameruTheme } from '@/theme/ameruTheme';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import Mugumo from '@/components/motifs/Mugumo';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#5B3A29', // deep brown, inspired by Meru earth tones
-    },
-    secondary: {
-      main: '#C5A572', // warm beige accent
-    },
-    background: {
-      default: '#F9F5EF',
-    },
-  },
-  typography: {
-    fontFamily: 'Inter, sans-serif',
-    h2: { fontWeight: 700 },
-    body1: { lineHeight: 1.7 },
-  },
-});
 
 export default function LandingPage() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={ameruTheme}>
       <Box sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
         {/* --- Header --- */}
         <AppBar position="static" color="transparent" elevation={0}>
@@ -89,16 +76,19 @@ export default function LandingPage() {
             {[
               {
                 title: 'Books & Manuscripts',
+                icon: <LibraryBooksIcon sx={{ color: 'secondary.main', fontSize: 40 }} />,
                 img: '/images/books.jpg',
                 desc: 'Digitized texts, historical manuscripts, and written folklore.',
               },
               {
                 title: 'Audio Recordings',
+                icon: <LibraryMusicIcon sx={{ color: 'secondary.main', fontSize: 40 }} />,
                 img: '/images/audio.jpg',
                 desc: 'Songs, oral histories, and recorded interviews with elders.',
               },
               {
                 title: 'Video Archives',
+                icon: <VideoLibraryIcon sx={{ color: 'secondary.main', fontSize: 40 }} />,
                 img: '/images/video.jpg',
                 desc: 'Documentaries and cultural ceremonies captured in motion.',
               },
@@ -115,7 +105,7 @@ export default function LandingPage() {
                   <CardMedia component="img" height="220" image={cat.img} alt={cat.title} />
                   <CardContent>
                     <Typography variant="h6" gutterBottom color="primary.main">
-                      {cat.title}
+                      {cat.icon}&nbsp;&nbsp;&nbsp;{cat.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {cat.desc}
@@ -167,6 +157,20 @@ export default function LandingPage() {
               </CardContent>
             </Card>
           </Container>
+        </Box>
+
+        {/* --- Woven pattern at the bottom --- */}
+        <Box
+          sx={{
+            backgroundImage: 'url(/patterns/woven.jpg)',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'repeat',
+            py: 8,
+          }}
+        >
+          <Typography variant="h2" align="center" color="primary.contrastText">
+            Voices of Our People
+          </Typography>
         </Box>
 
         {/* --- Footer --- */}
