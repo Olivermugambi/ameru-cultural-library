@@ -9,10 +9,31 @@ import { ameruTheme } from "@/theme/ameruTheme";
 
 // TEMP: mock data — replace with fetch from your backend later
 const mockBooks = [
-  { id: 1, title: "River Between", author: "Ngugi", category: "Fiction", cover: "/images/audio.jpg" },
-  { id: 2, title: "Sapiens", author: "Harari", category: "History", cover: "/images/books.jpg" },
-  { id: 3, title: "The Alchemist", author: "Coelho", category: "Philosophy", cover: "/images/video.jpg" },
-  { id: 4, title: "A Grain of Wheat", author: "Ngugi", category: "Fiction", cover: "/images/audio.jpg" },
+  { 
+    id: 1, 
+    title: "MERU ORIGINS, CUSTOMS, CULTURE AND TRADITIONS: MERU ORIGINS AND TRADITIONS", 
+    author: "TARCISIO F. B. GICHUNGE", 
+    category: "History", 
+    cover: "/images/meru-culture.jpg" },
+  { 
+    id: 2, 
+    title: "EPOCHS OF AMERU IN HISTORY EXPOUNDED: EPOCHS OF AMERU HISTORY", 
+    author: "TARCISIO F. B. GICHUNGE", 
+    category: "History", 
+    cover: "/images/epochs.jpg" 
+  },
+  { 
+    id: 3, 
+    title: "JULIUS BAARIU M'ITOBI AN ICON OF TRUST AND INTEGRITY IN MERU KENYA: AN ICON OF TRUST IN MERU", 
+    author: "TARCISIO F. B. GICHUNGE", 
+    category: "History", 
+    cover: "/images/julius.jpg" },
+  { 
+    id: 4, 
+    title: "HISTORY OF KENYA BEFORE AND AFTER COLONIZATION: HISTORY OF KENYA", 
+    author: "TARCISIO F. B. GICHUNGE", 
+    category: "History", 
+    cover: "/images/history-kenya.jpg" },
 ];
 
 export default function BooksPage() {
