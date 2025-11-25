@@ -107,7 +107,7 @@ export default function BooksPage() {
           {/* Right Column: Books Grid (9/12 of the space on medium/large screens) */}
           <Grid size={{ xs: 12, md: 9}}>
             <Typography variant="h4" fontWeight="bold" mb={3}>
-              Library
+              Library Books
             </Typography>
 
             <Grid container spacing={3}>

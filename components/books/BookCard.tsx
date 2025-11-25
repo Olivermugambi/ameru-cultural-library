@@ -6,9 +6,9 @@ export default function BookCard({ book }: { book: any }) {
       {book.cover && (
         <CardMedia
           component="img"
-          height="200"
           image={book.cover}
           alt={book.title}
+          sx={{ height: 350, objectFit: 'contain' }}
         />
       )}
 
