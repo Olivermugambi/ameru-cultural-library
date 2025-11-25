@@ -14,26 +14,34 @@ const mockBooks = [
     title: "MERU ORIGINS, CUSTOMS, CULTURE AND TRADITIONS: MERU ORIGINS AND TRADITIONS", 
     author: "TARCISIO F. B. GICHUNGE", 
     category: "History", 
-    cover: "/images/meru-culture.jpg" },
+    cover: "/images/meru-culture.jpg",
+    url: "https://read.amazon.com/sample/B079P757CL?clientId=share"
+   },
+    
   { 
     id: 2, 
     title: "EPOCHS OF AMERU IN HISTORY EXPOUNDED: EPOCHS OF AMERU HISTORY", 
     author: "TARCISIO F. B. GICHUNGE", 
     category: "History", 
-    cover: "/images/epochs.jpg" 
+    cover: "/images/epochs.jpg",
+    url: "https://read.amazon.com/sample/B096PRT2JT?clientId=share" 
   },
   { 
     id: 3, 
     title: "JULIUS BAARIU M'ITOBI AN ICON OF TRUST AND INTEGRITY IN MERU KENYA: AN ICON OF TRUST IN MERU", 
     author: "TARCISIO F. B. GICHUNGE", 
     category: "History", 
-    cover: "/images/julius.jpg" },
+    cover: "/images/julius.jpg",
+    url: "https://read.amazon.com/sample/B0DDKDNTSY?clientId=share" 
+  },
   { 
     id: 4, 
     title: "HISTORY OF KENYA BEFORE AND AFTER COLONIZATION: HISTORY OF KENYA", 
     author: "TARCISIO F. B. GICHUNGE", 
     category: "History", 
-    cover: "/images/history-kenya.jpg" },
+    cover: "/images/history-kenya.jpg",
+    url: "https://read.amazon.com/sample/B09DXB4YXW?clientId=share"
+   },
 ];
 
 export default function BooksPage() {

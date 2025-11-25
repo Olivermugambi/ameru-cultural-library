@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, CardMedia } from "@mui/material";
+import { Card, CardContent, Typography, CardMedia, Button } from "@mui/material";
 
 export default function BookCard({ book }: { book: any }) {
   return (
@@ -19,6 +19,9 @@ export default function BookCard({ book }: { book: any }) {
         <Typography variant="body2" color="text.secondary">
           {book.author}
         </Typography>
+        <Button variant="contained" color="primary" href={book.url}>
+            Read Sample
+        </Button>
       </CardContent>
     </Card>
   );
