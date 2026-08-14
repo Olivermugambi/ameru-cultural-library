@@ -4,10 +4,24 @@ import fs from 'node:fs';
 
 const read = (path) => fs.readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 
+test('AppProviders owns the single application shell boundary', () => {
+  const providers = read('components/providers/AppProviders.tsx');
+  assert.match(providers, /<AppShell>\{children\}<\/AppShell>/);
+});
+
 test('AppShell renders exactly one site navigation', () => {
   const shell = read('components/templates/AppShell.tsx');
   assert.match(shell, /<SiteNavigation\s*\/>/);
   assert.doesNotMatch(shell, /GlobalHeader|ResponsiveNavigation|NavBar/);
+});
+
+test('Pages do not create nested application shells', () => {
+  for (const path of ['app/page.tsx', 'app/library/page.tsx', 'app/library/books/page.tsx']) {
+    const page = read(path);
+    assert.doesNotMatch(page, /<AppShell>/, path);
+    assert.doesNotMatch(page, /components\/templates\/AppShell/, path);
+    assert.doesNotMatch(page, /<AppBar\b/, path);
+  }
 });
 
 test('SiteNavigation has one visible title per viewport state', () => {
@@ -16,15 +30,6 @@ test('SiteNavigation has one visible title per viewport state', () => {
   assert.match(navigation, /aria-label="Primary navigation"/);
   assert.match(navigation, /aria-label="Mobile navigation"/);
   assert.match(navigation, /href="\/search"/);
-});
-
-test('Legacy library pages delegate navigation to AppShell', () => {
-  for (const path of ['app/library/page.tsx', 'app/library/books/page.tsx']) {
-    const page = read(path);
-    assert.match(page, /import \{ AppShell \} from '@\/components\/templates\/AppShell'/);
-    assert.match(page, /<AppShell>/);
-    assert.doesNotMatch(page, /<AppBar\b/);
-  }
 });
 
 test('Featured book cover supports containment without cropping', () => {
