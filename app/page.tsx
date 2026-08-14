@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Grid, Stack } from '@mui/material';
 import { AppShell } from '@/components/templates/AppShell';
 import { HomeHero } from '@/components/organisms/HomeHero';
@@ -47,7 +46,7 @@ export default function HomePage() {
           <Stack spacing={2} flex={1}>
             <DesignText variant="title">Ameru of Kenya Lived in Egypt Long Ago</DesignText>
             <DesignText color="text.secondary">A cultural-historical work by Tarcisio F. B. Gichunge, introduced by Gichunge Wa M&apos;Thirua.</DesignText>
-            <DesignButton component={Link} href="/library">Explore the work</DesignButton>
+            <DesignButton href="/library">Explore the work</DesignButton>
           </Stack>
           <DesignText variant="caption" color="text.secondary" sx={{ maxWidth: 420 }}>
             The library brings together materials as objects of inquiry, preserving their context rather than reducing them to isolated files.
@@ -62,7 +61,7 @@ export default function HomePage() {
       />
 
       <ContentSection variant="accent" heading={{ eyebrow: 'Participate', title: 'Keep the library living', description: 'Discover programs, contribute knowledge, and help preserve cultural memory for future generations.' }}>
-        <DesignButton component={Link} href="/programs">Explore programs</DesignButton>
+        <DesignButton href="/programs">Explore programs</DesignButton>
       </ContentSection>
     </AppShell>
   );
