@@ -4,7 +4,7 @@ import { Paper, type PaperProps } from '@mui/material';
 
 export type SurfaceVariant = 'default' | 'subtle' | 'raised' | 'outlined' | 'inverse';
 
-export interface SurfaceProps extends PaperProps {
+export interface SurfaceProps extends Omit<PaperProps, 'variant'> {
   variant?: SurfaceVariant;
 }
 
