@@ -4,13 +4,15 @@ import fs from 'node:fs';
 
 const read = (path) => fs.readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 
-test('Home composes the application shell and Stitch content sections', () => {
+test('Home composes Stitch content sections without owning the application shell', () => {
   const home = read('app/page.tsx');
 
-  for (const component of ['AppShell', 'HomeHero', 'ContentSection', 'CollectionCard', 'BarazaInvitation']) {
+  for (const component of ['HomeHero', 'ContentSection', 'CollectionCard', 'BarazaInvitation']) {
     assert.match(home, new RegExp(`import \\{ ${component} \\}`));
   }
 
+  assert.doesNotMatch(home, /import \\{ AppShell \\}/);
+  assert.doesNotMatch(home, /<AppShell[\s>]/);
   assert.match(home, /Explore our collections/);
   assert.match(home, /A work to encounter/);
   assert.match(home, /Baraza la Ontologia/);
