@@ -26,8 +26,9 @@ test('Home uses semantic navigation destinations', () => {
 });
 
 test('Home keeps Baraza conceptually distinct from Community', () => {
+  const home = read('app/page.tsx');
   const baraza = read('components/organisms/BarazaInvitation.tsx');
   assert.match(baraza, /Baraza la Ontologia/);
-  assert.match(baraza, /philosophical inquiry/i);
-  assert.doesNotMatch(baraza, /Community feed/i);
+  assert.match(home, /philosophical inquiry/i);
+  assert.doesNotMatch(home, /Community feed/i);
 });
