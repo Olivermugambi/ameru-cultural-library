@@ -1,19 +1,13 @@
-'use client';
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { ameruTheme } from '@/theme/ameruTheme';
+import { inter, playfairDisplay } from '@/design-system/fonts';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const metadata: Metadata = {
+  title: 'Ameru Cultural Library',
+  description: 'A living digital library and cultural home for Ameru knowledge, heritage, and thought.',
+};
 
 export default function RootLayout({
   children,
@@ -22,9 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body        
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} ${playfairDisplay.variable}`}>
         <ThemeProvider theme={ameruTheme}>
           <CssBaseline />
           {children}
