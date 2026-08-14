@@ -7,8 +7,7 @@ const read = (path) => fs.readFileSync(new URL(`../${path}`, import.meta.url), '
 test('AppShell renders exactly one site navigation', () => {
   const shell = read('components/templates/AppShell.tsx');
   assert.match(shell, /<SiteNavigation\s*\/>/);
-  assert.doesNotMatch(shell, /GlobalHeader/);
-  assert.doesNotMatch(shell, /ResponsiveNavigation/);
+  assert.doesNotMatch(shell, /GlobalHeader|ResponsiveNavigation|NavBar/);
 });
 
 test('SiteNavigation has one visible title per viewport state', () => {
@@ -17,6 +16,15 @@ test('SiteNavigation has one visible title per viewport state', () => {
   assert.match(navigation, /aria-label="Primary navigation"/);
   assert.match(navigation, /aria-label="Mobile navigation"/);
   assert.match(navigation, /href="\/search"/);
+});
+
+test('Legacy library pages delegate navigation to AppShell', () => {
+  for (const path of ['app/library/page.tsx', 'app/library/books/page.tsx']) {
+    const page = read(path);
+    assert.match(page, /import \{ AppShell \} from '@\/components\/templates\/AppShell'/);
+    assert.match(page, /<AppShell>/);
+    assert.doesNotMatch(page, /<AppBar\b/);
+  }
 });
 
 test('Featured book cover supports containment without cropping', () => {
