@@ -1,5 +1,4 @@
 import { Grid, Stack } from '@mui/material';
-import { AppShell } from '@/components/templates/AppShell';
 import { HomeHero } from '@/components/organisms/HomeHero';
 import { ContentSection } from '@/components/organisms/ContentSection';
 import { CollectionCard } from '@/components/molecules/CollectionCard';
@@ -15,7 +14,7 @@ const collections = [
 
 export default function HomePage() {
   return (
-    <AppShell>
+    <>
       <HomeHero
         eyebrow="Ameru Cultural Library"
         title="A living library of Ameru knowledge."
@@ -63,6 +62,6 @@ export default function HomePage() {
       <ContentSection variant="accent" heading={{ eyebrow: 'Participate', title: 'Keep the library living', description: 'Discover programs, contribute knowledge, and help preserve cultural memory for future generations.' }}>
         <DesignButton href="/programs">Explore programs</DesignButton>
       </ContentSection>
-    </AppShell>
+    </>
   );
 }
