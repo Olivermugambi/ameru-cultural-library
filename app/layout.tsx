@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { ameruTheme } from '@/theme/ameruTheme';
 import { inter, playfairDisplay } from '@/design-system/fonts';
+import { AppShell } from '@/components/templates/AppShell';
 
 export const metadata: Metadata = {
   title: 'Ameru Cultural Library',
@@ -19,7 +20,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${playfairDisplay.variable}`}>
         <ThemeProvider theme={ameruTheme}>
           <CssBaseline />
-          {children}
+          <AppShell>{children}</AppShell>
         </ThemeProvider>
       </body>
     </html>
