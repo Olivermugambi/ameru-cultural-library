@@ -32,5 +32,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run hardening verification
+      - name: Run complete hardening suite
         run: npm run verify
