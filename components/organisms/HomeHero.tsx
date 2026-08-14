@@ -13,12 +13,13 @@ export interface HomeHeroProps {
   title: string;
   description: string;
   image?: string;
+  imageFit?: 'cover' | 'contain';
   primaryAction: { label: string; href: string };
   secondaryAction?: { label: string; href: string };
   variant?: HomeHeroVariant;
 }
 
-export function HomeHero({ eyebrow, title, description, image, primaryAction, secondaryAction, variant = 'editorial' }: HomeHeroProps) {
+export function HomeHero({ eyebrow, title, description, image, imageFit = 'cover', primaryAction, secondaryAction, variant = 'editorial' }: HomeHeroProps) {
   return (
     <Box component="section" sx={{ py: { xs: 7, md: 12 }, background: variant === 'immersive' ? 'linear-gradient(135deg, #F1E4D5 0%, #FAF7F1 70%)' : 'background.default' }}>
       <Container maxWidth="xl">
@@ -32,7 +33,7 @@ export function HomeHero({ eyebrow, title, description, image, primaryAction, se
               {secondaryAction && <DesignButton component={Link} href={secondaryAction.href} variant="outlined">{secondaryAction.label}</DesignButton>}
             </Stack>
           </Stack>
-          {image && <Box flex={1} width="100%"><MediaFrame src={image} alt="" variant="portrait" priority /></Box>}
+          {image && <Box flex={1} width="100%"><MediaFrame src={image} alt="Featured book cover: Ameru of Kenya Lived in Egypt Long Ago" variant="portrait" fit={imageFit} priority /></Box>}
         </Stack>
       </Container>
     </Box>
