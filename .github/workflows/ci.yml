@@ -32,8 +32,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run repository tests
-        run: npm test --if-present
-
-      - name: Run typecheck, lint, and production build
+      - name: Run complete hardening suite
         run: npm run verify
