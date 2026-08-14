@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { ameruTheme } from '@/theme/ameruTheme';
 import { inter, playfairDisplay } from '@/design-system/fonts';
-import { AppShell } from '@/components/templates/AppShell';
+import { AppProviders } from '@/components/providers/AppProviders';
 
 export const metadata: Metadata = {
   title: 'Ameru Cultural Library',
@@ -18,10 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfairDisplay.variable}`}>
-        <ThemeProvider theme={ameruTheme}>
-          <CssBaseline />
-          <AppShell>{children}</AppShell>
-        </ThemeProvider>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );
