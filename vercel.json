@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "buildCommand": "npm run verify",
-  "installCommand": "npm ci",
+  "buildCommand": "pnpm run verify",
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "outputDirectory": ".next"
 }
